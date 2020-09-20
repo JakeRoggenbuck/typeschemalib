@@ -1,5 +1,5 @@
 # lib_type_schema
-A yaml like schema file that can assign types and or regex to keys.
+A yaml like schema that can be used to check dictionaries for correct schema
 
 ## Schema file
 #### schema example
@@ -33,6 +33,5 @@ valid = dataChecker.check_type()
 ```
 
 ## Todo
-- Should incorrect schema throw error or just return false?
-- Should there be an option for both?
-- Have types for id and for more complex types that can be stored in mongodb documents
+Make schema have regex
+Make schema have functions or options to validate data
