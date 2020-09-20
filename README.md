@@ -28,9 +28,8 @@ data = {"point": 45, "my_string": "Hey", "grade": 4.5}
 dataChecker = file_reader.DataChecker(schema_file, data)
 
 # Run type check to see if data corresponds
+# valid will be True if schema is correct, it will throw errors otherwise
 valid = dataChecker.check_type()
-
-# Valid will be True if schema is correct, it will throw errors otherwise
 ```
 
 ## Todo
