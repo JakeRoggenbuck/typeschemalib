@@ -80,6 +80,8 @@ class DataChecker:
                 if not float(value) == value:
                     raise ValueError(
                         f"{value} not {stml_value} on line {line_num}")
+            elif stml_value == "Undef":
+                pass
             else:
                 # Check if type exists in schema
                 if stml_value == "" or stml_value == " ":
