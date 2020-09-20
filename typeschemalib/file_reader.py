@@ -64,32 +64,27 @@ class DataChecker:
             stml_value = self.schema.get(key)
             # Check type and key are listed in schema
             if stml_value is None:
-                raise ValueError(f"{key} not in schema")
+                return f"{key} not in schema"
             # Check if type is listed as int and can be an int
             if stml_value == "Int":
                 if not int(value) == value:
-                    raise ValueError(
-                        f"{value} not {stml_value} on line {line_num}")
+                    return f"{value} not {stml_value} on line {line_num}"
             # Check if type is listed as str and if it should be
             elif stml_value == "Str":
                 if not str(value) == value:
-                    raise ValueError(
-                        f"{value} not {stml_value} on line {line_num}")
+                    return f"{value} not {stml_value} on line {line_num}"
             # Check if type is a float in schema and if it should be
             elif stml_value == "Float":
                 if not float(value) == value:
-                    raise ValueError(
-                        f"{value} not {stml_value} on line {line_num}")
+                    return f"{value} not {stml_value} on line {line_num}"
             elif stml_value == "Undef":
                 pass
             else:
                 # Check if type exists in schema
                 if stml_value == "" or stml_value == " ":
-                    raise ValueError(
-                        f"{value} has no specified type on line {line_num}")
+                    return f"{value} has no specified type on line {line_num}"
                 else:
                     # Warn the type is incorrect
-                    raise ValueError(
-                        f"{value} has incorrect or non existent type on line {line_num}")
+                    return f"{value} has incorrect or non existent type on line {line_num}"
             line_num += 1
         return True
