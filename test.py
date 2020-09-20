@@ -1,4 +1,5 @@
 import file_reader
+from termcolor import colored
 
 
 if __name__ == "__main__":
@@ -7,4 +8,7 @@ if __name__ == "__main__":
 
     dataChecker = file_reader.DataChecker(schema_file, data)
     valid = dataChecker.check_type()
-    print(valid)
+    if valid is True:
+        print(colored(valid, 'green'))
+    else:
+        print(colored(valid, 'red'))
