@@ -1,8 +1,8 @@
-class StmlParser:
+class StmlReader:
     def __init__(self, schema_file):
         """Get schema_file as name and save file and save file as stml_file"""
         self.schema_file = schema_file
-        self.stml_file = self.parse()
+        self.lines = self._final_lines()
 
     def _get_file(self):
         """Open schema_file and return as file"""
@@ -15,10 +15,21 @@ class StmlParser:
         lines = file.readlines()
         return lines
 
-    def clean_line(self, line):
+    def _clean_line(self, line):
         """Clean new lines from file"""
         line = line.rstrip('\n')
         return line
+
+    def _final_lines(self):
+        lines = self._get_lines()
+        lines = [line.rstrip('\n') for line in lines]
+        return lines
+
+
+class StmlParser:
+    def __init__(self, schema_lines):
+        self.schema_lines = schema_lines
+        self.schema_dict = self.parse()
 
     def split_key_type(self, line, num):
         """Split key: type from line"""
@@ -31,7 +42,6 @@ class StmlParser:
     def parse_line(self, line, num):
         """Clean and split line, get key and type and return as
         dict with key and type"""
-        line = self.clean_line(line)
         # Get key and type from line split by ':'
         line = self.split_key_type(line, num)
         # Set both values of line_key and line_type
@@ -41,18 +51,17 @@ class StmlParser:
 
     def parse(self):
         """Run parse_line for each line and get all lines"""
-        lines = self._get_lines()
         all_lines = {}
-        for num, line in enumerate(lines):
+        for num, line in enumerate(self.schema_lines):
             new_line = self.parse_line(line, num+1)
             all_lines[new_line["key"]] = new_line["type"]
         return all_lines
 
 
 class DataChecker:
-    def __init__(self, schema: str, data: dict):
+    def __init__(self, schema: dict, data: dict):
         """Run StmlParser on file name 'schema'"""
-        self.schema = StmlParser(schema).stml_file
+        self.schema = schema
         self.data = data
 
     def check_type(self):
