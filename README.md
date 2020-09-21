@@ -15,13 +15,12 @@ grade: Float
 ```
 
 ## Checking data for correct schema
-
+### Test parse with stml file
 ```py
 from typeschemalib import typeschemalib
 from termcolor import colored
 
 
-"""Test parse with stml file"""
 schema_file = "test.stml"
 data = {"point": 45, "my_string": "Hey", "grade": 4.5}
 
@@ -35,8 +34,13 @@ if valid is True:
 else:
 	print(colored(valid, 'red'))
 
+```
+### Test parse with schema dictionary
+```py
+from typeschemalib import typeschemalib
+from termcolor import colored
 
-"""Test parse with schema dictionary"""
+
 data = {"point": 45, "my_string": "Hey", "grade": 4.5}
 schema = {"point": "Int", "my_string": "Str", "grade": "Float"}
 
