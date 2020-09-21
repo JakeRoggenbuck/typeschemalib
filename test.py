@@ -1,4 +1,4 @@
-from typeschemalib.file_reader import DataChecker
+from typeschemalib.typeschemalib import DataChecker
 from termcolor import colored
 
 

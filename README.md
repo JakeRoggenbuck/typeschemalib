@@ -1,4 +1,4 @@
-# lib_type_schema
+# typeschemalib
 A yaml like schema that can be used to check dictionaries for correct schema
 
 ## Schema file
@@ -17,7 +17,7 @@ grade: Float
 ## Checking data for correct schema
 
 ```py
-import file_reader
+from typeschemalib import typeschemalib
 
 # Set schema file
 schema_file = "test.stml"
@@ -25,11 +25,11 @@ schema_file = "test.stml"
 data = {"point": 45, "my_string": "Hey", "grade": 4.5}
 
 # Check data for correct schema_file
-dataChecker = file_reader.DataChecker(schema_file, data)
+data_checker = typeschemalib.DataChecker(schema_file, data)
 
 # Run type check to see if data corresponds
 # valid will be True if schema is correct, it will throw errors otherwise
-valid = dataChecker.check_type()
+valid = data_checker.check_type()
 ```
 
 ## Todo
