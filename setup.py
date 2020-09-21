@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='typeschemalib',
-      version='1.1',
+      version='1.2',
       description='A yaml like schema that can be used to check dictionaries for correct schema',
       long_description=long_description,
       long_description_content_type="text/markdown",
