@@ -18,18 +18,36 @@ grade: Float
 
 ```py
 from typeschemalib import typeschemalib
+from termcolor import colored
 
-# Set schema file
+
+"""Test parse with stml file"""
 schema_file = "test.stml"
-# Set Data dictionary that corresponds to schema file
 data = {"point": 45, "my_string": "Hey", "grade": 4.5}
 
-# Check data for correct schema_file
-data_checker = typeschemalib.DataChecker(schema_file, data)
+lines = typeschemalib.StmlReader(schema_file).lines
+schema_dict = typeschemalib.StmlParser(lines).schema_dict
 
-# Run type check to see if data corresponds
-# valid will be True if schema is correct, it will throw errors otherwise
-valid = data_checker.check_type()
+dataChecker = typeschemalib.DataChecker(schema_dict, data)
+valid = dataChecker.check_type()
+if valid is True:
+	print(colored(valid, 'green'))
+else:
+	print(colored(valid, 'red'))
+
+
+"""Test parse with schema dictionary"""
+data = {"point": 45, "my_string": "Hey", "grade": 4.5}
+schema = {"point": "Int", "my_string": "Str", "grade": "Float"}
+
+schema_dict = typeschemalib.StmlParser(lines).schema_dict
+dataChecker = typeschemalib.DataChecker(schema, data)
+
+valid = dataChecker.check_type()
+if valid is True:
+	print(colored(valid, 'green'))
+else:
+	print(colored(valid, 'red'))
 ```
 
 ## Todo
