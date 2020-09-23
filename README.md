@@ -23,7 +23,7 @@ from typeschemalib import typeschemalib
 if __name__ == "__main__":
     data = {"point": 45, "my_string": "Hey", "grade": 4.5}
 
-	# Validate data from schema file
+    # Validate data from schema file
     schema = "test.stml"
     valid = typeschemalib.schema_check(schema, data)
     print(valid)
