@@ -1,18 +1,17 @@
 from typeschemalib import typeschemalib
-from termcolor import colored
 
 
 if __name__ == "__main__":
-    """Test parse with stml file"""
-    schema_file = "test.stml"
-    data = {"point": 45, "my_string": "Hey", "grade": 4}
+    data = {"point": 45, "my_string": "Hey", "grade": 4.5}
 
-    lines = typeschemalib.StmlReader(schema_file).lines
-    schema_dict = typeschemalib.StmlParser(lines).schema_dict
+    schema = "test.stml"
+    valid = typeschemalib.schema_check(schema, data)
+    print(valid)
 
-    dataChecker = typeschemalib.DataChecker(schema_dict, data)
-    valid = dataChecker.check_type()
-    if valid is True:
-        print(colored(valid, 'green'))
-    else:
-        print(colored(valid, 'red'))
+    schema = ["point: Int", "my_string: Str", "grade: Float"]
+    valid = typeschemalib.schema_check(schema, data)
+    print(valid)
+
+    schema = {"point": "Int", "my_string": "Str", "grade": "Float"}
+    valid = typeschemalib.schema_check(schema, data)
+    print(valid)

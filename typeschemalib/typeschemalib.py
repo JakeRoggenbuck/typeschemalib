@@ -97,3 +97,22 @@ class DataChecker:
                     return f"{value} has incorrect or non existent type on line {line_num}"
             line_num += 1
         return True
+
+
+def schema_check(schema, data):
+    """Check type and parse accordingly"""
+    if isinstance(schema, str):
+        # If schema is filename
+        lines = StmlReader(schema).lines
+        schema_dict = StmlParser(lines).schema_dict
+        dataChecker = DataChecker(schema_dict, data)
+    if isinstance(schema, list):
+        # If schema is a list of stml
+        schema_dict = StmlParser(schema).schema_dict
+        dataChecker = DataChecker(schema_dict, data)
+    if isinstance(schema, dict):
+        # If schema is a dict of stml
+        dataChecker = DataChecker(schema, data)
+
+    valid = dataChecker.check_type()
+    return valid
