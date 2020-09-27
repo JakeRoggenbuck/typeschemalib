@@ -41,3 +41,4 @@ if __name__ == "__main__":
 
 ## Todo
 Make schema have regex
+Add object type and class checker, isinstance issubclass `time: DateTimeObject`
