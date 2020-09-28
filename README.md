@@ -40,5 +40,6 @@ if __name__ == "__main__":
 ```
 
 ## Todo
-Make schema have regex
+Make schema have regex<br>
+Make readme easier to understand and read (mostly code comments and cli commands)
 Add object type and class checker, isinstance issubclass `time: DateTimeObject`
