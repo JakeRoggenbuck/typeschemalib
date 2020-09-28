@@ -2,7 +2,7 @@ from typeschemalib import typeschemalib
 
 
 if __name__ == "__main__":
-    data = {"point": 45, "my_string": "Hey", "grade": 4.5}
+    data = {"point": 45, "my_string": "Hey", "grade": 4.5, "passed": True}
 
     # Validate data from schema file
     schema = "test.stml"
@@ -10,11 +10,11 @@ if __name__ == "__main__":
     print(valid)
 
     # Validate data from list of schema
-    schema = ["point: Int", "my_string: Str", "grade: Float"]
+    schema = ["point: Int", "my_string: Str", "grade: Float", "passed: Bool"]
     valid = typeschemalib.schema_check(schema, data)
     print(valid)
 
     # Validate data from dict of values
-    schema = {"point": "Int", "my_string": "Str", "grade": "Float"}
+    schema = {"point": "Int", "my_string": "Str", "grade": "Float", "passed": "Bool"}
     valid = typeschemalib.schema_check(schema, data)
     print(valid)

@@ -1,3 +1,4 @@
 point: Int
 my_string: Str
 grade: Float
+passed: Bool

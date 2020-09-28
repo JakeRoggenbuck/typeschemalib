@@ -147,6 +147,9 @@ class DataChecker:
             elif stml_value == "Float":
                 if not float(value) == value:
                     return f"{value} not {stml_value} on line {line_num}"
+            elif stml_value == "Bool":
+                if not bool(value) == value:
+                    return f"{value} not {stml_value} on line {line_num}"
             elif stml_value == "Undef":
                 pass
             else:
