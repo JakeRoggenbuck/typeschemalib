@@ -10,11 +10,11 @@ if __name__ == "__main__":
     print(valid)
 
     # Validate data from list of schema
-    schema = ["point: Int", "my_string: Str", "grade: Int"]
+    schema = ["point: Int", "my_string: Str", "grade: Float"]
     valid = typeschemalib.schema_check(schema, data)
     print(valid)
 
     # Validate data from dict of values
-    schema = {"point": "Int", "my_string": "Str", "grade": "Int"}
+    schema = {"point": "Int", "my_string": "Str", "grade": "Float"}
     valid = typeschemalib.schema_check(schema, data)
     print(valid)
