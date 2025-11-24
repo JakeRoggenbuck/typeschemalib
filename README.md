@@ -1,5 +1,11 @@
 # typeschemalib
-A yaml like schema that can be used to check dictionaries for correct schema
+A yaml-like schema that can be used to check dictionaries for correct schema. [Typelibschema](https://pypi.org/project/typeschemalib/) is published to Pypi.org.
+
+## Install
+
+```
+pip install typeschemalib
+```
 
 ## Schema file
 #### schema example
@@ -40,6 +46,6 @@ if __name__ == "__main__":
 ```
 
 ## Todo
-Make schema have regex<br>
-Make documentation for stml writer<br>
-Add object type and class checker, isinstance issubclass `time: DateTimeObject`
+- [ ] Make schema have regex
+- [ ] Make documentation for stml writer
+- [ ] Add object type and class checker, isinstance issubclass `time: DateTimeObject`
